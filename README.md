@@ -1,4 +1,4 @@
-﻿# TakeawayTestAutomation
+﻿# LaravelTestAutomation
 
 > **Historical reference project.** Implemented as a take-home assignment in 2021 to demonstrate REST API test automation using Java, Cucumber BDD, and Rest Assured.
 
@@ -63,4 +63,4 @@ Reports are generated at `target/cucumber-reports.html`.
 
 ## Execution Screenshot
 
-![Test Report Screenshot](https://github.com/aliboztemir/TakeawayTestAutomation/blob/main/screenshots/TestReportScreenShot.png)
+![Test Report Screenshot](https://github.com/aliboztemir/LaravelTestAutomation/blob/main/screenshots/TestReportScreenShot.png)

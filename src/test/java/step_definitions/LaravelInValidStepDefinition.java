@@ -1,10 +1,10 @@
-package step_definitions;
+﻿package step_definitions;
 
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
-public class TakeAwayInValidStepDefinition {
+public class LaravelInValidStepDefinition {
 
 	@When("AddTaskAPI request is sent as Post HTTP request with invalid data")
 	public void add_task_api_request_is_sent_as_post_http_request_with_invalid_data() {

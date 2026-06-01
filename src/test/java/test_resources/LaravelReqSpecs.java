@@ -1,4 +1,4 @@
-package test_resources;
+﻿package test_resources;
 
 import static io.restassured.RestAssured.given;
 
@@ -15,14 +15,14 @@ import io.restassured.specification.RequestSpecification;
 import java_resources.ExternalData;
 import java_resources.Payloads;
 
-public class TakeAwayReqSpecs {
+public class LaravelReqSpecs {
 
 	private static String baseUri = ExternalData.getGlobalData("baseUri");
 	private static ContentType contentType = ContentType.JSON;
 	private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 	private static LocalDateTime time;
 	
-	public static RequestSpecification takeAwayReqSpec()
+	public static RequestSpecification laravelReqSpec()
 	{
 		PrintStream log = null;
 		try
@@ -36,34 +36,34 @@ public class TakeAwayReqSpecs {
 		
 		time = LocalDateTime.now();
 		log.append("\n******************************************************\n");
-		log.append("***   Takeaway Request Sent at: " + dtf.format(time).toString() + "   ***\n");
+		log.append("***   Laravel Request Sent at: " + dtf.format(time).toString() + "   ***\n");
 		log.append("******************************************************\n\n");
 		
-		// Create a generic RequestSpecification that can be used for all Takeaway API requests (and not just for AddUserAPI)
-		RequestSpecification takeAwayReqSpec =	new RequestSpecBuilder()
+		// Create a generic RequestSpecification that can be used for all Laravel API requests (and not just for AddUserAPI)
+		RequestSpecification laravelReqSpec =	new RequestSpecBuilder()
 												.addFilter(RequestLoggingFilter.logRequestTo(log))
 												.addFilter(ResponseLoggingFilter.logResponseTo(log))
 												.setBaseUri(baseUri)
 												.setContentType(contentType)
 												.build();
 		
-		return takeAwayReqSpec;
+		return laravelReqSpec;
 	}
 	public static RequestSpecification loginApiReqSpec(String email, String password)
 	{
-		RequestSpecification loginApiReqSpec = given().spec(TakeAwayReqSpecs.takeAwayReqSpec()).body(Payloads.loginApiPayload(email, password));
+		RequestSpecification loginApiReqSpec = given().spec(LaravelReqSpecs.laravelReqSpec()).body(Payloads.loginApiPayload(email, password));
 		return loginApiReqSpec;
 	}
 	
 	public static RequestSpecification addTaskReqSpec(String title, String access_token)
 	{
-		RequestSpecification addTaskReqSpec = given().headers("Authorization", "Bearer " + access_token).spec(TakeAwayReqSpecs.takeAwayReqSpec()).body(Payloads.addTaskPayload(title));
+		RequestSpecification addTaskReqSpec = given().headers("Authorization", "Bearer " + access_token).spec(LaravelReqSpecs.laravelReqSpec()).body(Payloads.addTaskPayload(title));
 		return addTaskReqSpec;
 	}
 	
 	public static RequestSpecification putTaskReqSpec(String task_id, String title, String access_token)
 	{
-		RequestSpecification putTaskReqSpec = given().headers("Authorization", "Bearer " + access_token).spec(TakeAwayReqSpecs.takeAwayReqSpec()).body(Payloads.putTaskPayload(title)).pathParam("id", task_id);
+		RequestSpecification putTaskReqSpec = given().headers("Authorization", "Bearer " + access_token).spec(LaravelReqSpecs.laravelReqSpec()).body(Payloads.putTaskPayload(title)).pathParam("id", task_id);
 		return putTaskReqSpec;
 	}
 	
@@ -73,7 +73,7 @@ public class TakeAwayReqSpecs {
 			user_id = "invaliduserid";
 		} 
 		
-		RequestSpecification getUserReqSpec = given().spec(TakeAwayReqSpecs.takeAwayReqSpec().pathParam("id", user_id));
+		RequestSpecification getUserReqSpec = given().spec(LaravelReqSpecs.laravelReqSpec().pathParam("id", user_id));
 		return getUserReqSpec;
 		
 	}
@@ -84,7 +84,7 @@ public class TakeAwayReqSpecs {
 			task_id = "invaliduserid";
 		} 
 		
-		RequestSpecification getTaskReqSpec = given().headers("Authorization", "Bearer " + access_token).spec(TakeAwayReqSpecs.takeAwayReqSpec().pathParam("id", task_id));
+		RequestSpecification getTaskReqSpec = given().headers("Authorization", "Bearer " + access_token).spec(LaravelReqSpecs.laravelReqSpec().pathParam("id", task_id));
 		return getTaskReqSpec;
 		
 	}
@@ -95,14 +95,14 @@ public class TakeAwayReqSpecs {
 			task_id = "invaliduserid";
 		} 
 		
-		RequestSpecification deleteTaskReqSpec = given().headers("Authorization", "Bearer " + access_token).spec(TakeAwayReqSpecs.takeAwayReqSpec().pathParam("id", task_id));
+		RequestSpecification deleteTaskReqSpec = given().headers("Authorization", "Bearer " + access_token).spec(LaravelReqSpecs.laravelReqSpec().pathParam("id", task_id));
 		return deleteTaskReqSpec;
 		
 	}
 	
 	public static RequestSpecification getAllTaskReqSpec(String data, String access_token)
 	{
-		RequestSpecification getAllTaskReqSpec = given().headers("Authorization", "Bearer " + access_token).spec(TakeAwayReqSpecs.takeAwayReqSpec());
+		RequestSpecification getAllTaskReqSpec = given().headers("Authorization", "Bearer " + access_token).spec(LaravelReqSpecs.laravelReqSpec());
 		return getAllTaskReqSpec;
 		
 	}
