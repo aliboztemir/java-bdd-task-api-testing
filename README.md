@@ -1,6 +1,6 @@
 ﻿# LaravelTestAutomation
 
-> **Historical reference project.** Implemented as a take-home assignment in 2021 to demonstrate REST API test automation using Java, Cucumber BDD, and Rest Assured.
+> **Historical reference project.** Built as a personal practice exercise in 2021 to demonstrate REST API test automation using Java, Cucumber BDD, and Rest Assured.
 
 ---
 
